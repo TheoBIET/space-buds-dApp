@@ -19,10 +19,13 @@ export default function Navbar() {
         </div>
         <nav className={styles.nav}>
           <Link href="/">
-            <a className={styles.link}>Homepage</a>
+            <a className={styles.link}>Home</a>
           </Link>
           <Link href="/roadmap">
             <a className={styles.link}>Roadmap</a>
+              </Link>
+              <Link href="/roadmap">
+            <a className={styles.link}>Team</a>
           </Link>
           <Link href="https://discord.gg/e8BDZXpGfS">
             <a className={styles.link}>Discord</a>

@@ -3,7 +3,7 @@
 .container {
   display: flex;
   align-items: center;
-  padding: calc($gutter * 1.5);
+  padding: calc($gutter * 1.5) calc($gutter * 3);
   gap: $gutter;
   width: 100%;
 

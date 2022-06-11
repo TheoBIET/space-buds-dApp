@@ -1,0 +1,122 @@
+@import "../abstracts/vars.scss";
+$url: "https://pbs.twimg.com/media/FDT5DkOXMAgzz38.jpg:large";
+
+.overview {
+  position: relative;
+
+  .cover {
+    height: 40vh;
+    background: linear-gradient(
+        179.72deg,
+        #000000 0.24%,
+        rgba(0, 0, 0, 0) 94.52%
+      ),
+      url($url);
+    background-size: cover;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .picture {
+    position: absolute;
+    width: calc($gutter * 12);
+    height: calc($gutter * 12);
+    transform: translate(0, -70%);
+    border-radius: 20px;
+  }
+
+  .name {
+    display: flex;
+    align-items: center;
+    margin-left: calc($gutter * 12.5);
+    margin-top: calc(($gutter * 1.5));
+
+    .username {
+      flex: 2;
+      font-size: 36px;
+      font-weight: bold;
+      background: linear-gradient(
+        to bottom right,
+        #ff44ec 20%,
+        #cde7d8 40%,
+        #14f195 50%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .wallet {
+      padding: calc($gutter / 2);
+      border-radius: 8px;
+      background: $mid-gray;
+      display: flex;
+      align-items: center;
+      gap: calc($gutter / 2);
+      cursor: pointer;
+
+      &:hover {
+        background: darken($mid-gray, 5%);
+      }
+    }
+  }
+
+  .description {
+    margin-top: $gutter;
+    font-size: 16px;
+  }
+
+  .statistics {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: calc($gutter * 2) 0;
+    font-size: 20px;
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .followButton {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      gap: calc($gutter / 2);
+      padding: calc($gutter / 3) $gutter;
+      cursor: pointer;
+      border-radius: 8px;
+      color: $black;
+      box-shadow: 0px 4px 4px #80c6b9;
+      transition: all 0.2s ease-in-out;
+      background: linear-gradient(
+        140deg,
+        #ff44ec 3.78%,
+        #cde7d8 42.54%,
+        #80c6b9 60.5%,
+        #14f195 100%
+      );
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
+      svg {
+        font-size: 30px;
+      }
+    }
+  }
+}
+
+.nav {
+  ul {
+    display: flex;
+    justify-content: space-around;
+
+    li {
+      cursor: pointer;
+      
+      &.active {
+        border-bottom: 2px solid $white;
+      }
+    }
+  }
+}

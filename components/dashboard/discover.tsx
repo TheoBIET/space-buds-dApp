@@ -1,12 +1,12 @@
 import styles from "../../styles/components/Discover.module.scss";
 
 import { BiTrendingDown, BiTrendingUp, BiSearchAlt } from "react-icons/bi";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 
 export default function Discover() {
-  const initialCoins = ["bitcoin", "solana", "ethereum"];
+  const initialCoins = useMemo(() => ["bitcoin", "solana", "ethereum"], []);
   const availablesTimeFrames = ["24h", "7d", "30d"];
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [coinsData, setCoinsData] = useState<Array<any>>([]);

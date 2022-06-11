@@ -1,5 +1,6 @@
 import Layout from '../components/landing/layout';
 import styles from '../styles/pages/Home.module.scss';
+import type { ReactElement } from 'react';
 
 export default function Landing() {
   return (
@@ -8,4 +9,4 @@ export default function Landing() {
   )
 }
 
-Landing.getLayout = (page) => <Layout>{page}</Layout>;
+Landing.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;

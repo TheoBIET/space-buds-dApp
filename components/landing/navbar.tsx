@@ -12,7 +12,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const currentPath = Router.pathname;
-    if (currentPath === "/") {
+    if (currentPath === "/" || currentPath === "/team" || currentPath === "/roadmap") {
       if (wallet && publicKey) {
         // Redirect to the timeline page if the user is logged in
         Router.push("/timeline");
@@ -36,7 +36,7 @@ export default function Navbar() {
         <Link href="/roadmap">
           <a className={styles.link}>Roadmap</a>
         </Link>
-        <Link href="/roadmap">
+        <Link href="/team">
           <a className={styles.link}>Team</a>
         </Link>
         <Link href="https://discord.gg/e8BDZXpGfS">

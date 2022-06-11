@@ -2,12 +2,12 @@ import Layout from '../components/dashboard/layout';
 import styles from '../styles/pages/Profile.module.scss';
 import type { ReactElement } from 'react';
 
-export default function Profile() {
+export default function Staking() {
     return (
         <div>
-            Profile Component OK!
+            Staking Component OK!
         </div>
     )
 }
 
-Profile.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+Staking.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;

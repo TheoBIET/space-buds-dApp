@@ -1,0 +1,69 @@
+@import "../abstracts/vars.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: $gutter calc($gutter * 2);
+  gap: calc($gutter * 2.5);
+
+  .logo {
+    display: flex;
+    align-items: flex-end;
+
+    h1 {
+      font-size: 36px;
+      padding-bottom: 0.5rem;
+    }
+  }
+
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+    flex: 2;
+  }
+
+  .bottom {
+    display: flex;
+    align-items: flex-end;
+    flex: 2;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: calc($gutter / 2);
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+
+    .icon {
+      font-size: 30px;
+    }
+
+    &.active {
+      background: linear-gradient(
+        100deg,
+        #ff44ec 3.78%,
+        #cde7d8 42.54%,
+        #80c6b9 80.5%,
+        #14f195 129.08%
+      );
+      color: $black;
+    }
+
+    &:hover {
+      background: linear-gradient(
+        100deg,
+        #ff44ec 3.78%,
+        #cde7d8 42.54%,
+        #80c6b9 80.5%,
+        #14f195 129.08%
+      );
+      color: $black;
+    }
+  }
+}

@@ -2,12 +2,12 @@ import Layout from '../components/dashboard/layout';
 import styles from '../styles/pages/Profile.module.scss';
 import type { ReactElement } from 'react';
 
-export default function Profile() {
+export default function Settings() {
     return (
         <div>
-            Profile Component OK!
+            Settings Component OK!
         </div>
     )
 }
 
-Profile.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+Settings.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;

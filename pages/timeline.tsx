@@ -2,12 +2,12 @@ import Layout from '../components/dashboard/layout';
 import styles from '../styles/pages/Profile.module.scss';
 import type { ReactElement } from 'react';
 
-export default function Profile() {
+export default function Timeline() {
     return (
         <div>
-            Profile Component OK!
+            Timeline Component OK!
         </div>
     )
 }
 
-Profile.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+Timeline.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;

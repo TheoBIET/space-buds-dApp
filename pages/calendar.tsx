@@ -2,12 +2,12 @@ import Layout from '../components/dashboard/layout';
 import styles from '../styles/pages/Profile.module.scss';
 import type { ReactElement } from 'react';
 
-export default function Profile() {
+export default function Calendar() {
     return (
         <div>
-            Profile Component OK!
+            Calendar Component OK!
         </div>
     )
 }
 
-Profile.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;
+Calendar.getLayout = (page: ReactElement) => <Layout>{page}</Layout>;

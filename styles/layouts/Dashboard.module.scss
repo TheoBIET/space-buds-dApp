@@ -1,0 +1,11 @@
+@import "../abstracts/vars.scss";
+
+#dashboard {
+    min-height: 100vh;
+    padding: $gutter;
+    display: flex;
+
+    .content {
+        flex: 2;
+    }
+}

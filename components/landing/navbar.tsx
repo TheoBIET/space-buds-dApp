@@ -1,16 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "../../styles/components/Navbar.module.scss";
+import Router from 'next/router';
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useEffect } from "react";
+
+import styles from "../../styles/components/Navbar.module.scss";
 
 export default function Navbar() {
   const { publicKey, wallet, disconnect } = useWallet();
 
   useEffect(() => {
-    if (wallet && publicKey) {
-      
+    const currentPath = Router.pathname;
+    if (currentPath === "/") {
+      if (wallet && publicKey) {
+        // Redirect to the profile page if the user is logged in
+        Router.push("/profile");
+      }
     }
   }, [wallet, publicKey]);
 

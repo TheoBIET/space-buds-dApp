@@ -5,6 +5,7 @@
   flex-direction: column;
   padding: $gutter calc($gutter * 2);
   gap: calc($gutter * 2.5);
+  min-width: 20%;
 
   .logo {
     display: flex;

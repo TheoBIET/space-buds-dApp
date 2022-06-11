@@ -1,4 +1,5 @@
 import Sidebar from "./sidebar";
+import Discover from "./discover";
 import styles from "../../styles/layouts/Dashboard.module.scss";
 import type { ReactElement } from "react";
 
@@ -11,6 +12,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
     <div id={styles.dashboard}>
       <Sidebar />
       <div className={styles.content}>{children}</div>
+      <Discover />
     </div>
   );
 }

@@ -14,8 +14,8 @@ export default function Navbar() {
     const currentPath = Router.pathname;
     if (currentPath === "/") {
       if (wallet && publicKey) {
-        // Redirect to the profile page if the user is logged in
-        Router.push("/profile");
+        // Redirect to the timeline page if the user is logged in
+        Router.push("/timeline");
       }
     }
   }, [wallet, publicKey]);

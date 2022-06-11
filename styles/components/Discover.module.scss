@@ -1,0 +1,153 @@
+@import "../abstracts/vars.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: $gutter calc($gutter * 2);
+  gap: calc($gutter * 2.5);
+  min-width: 22%;
+
+  .searchBar {
+    display: flex;
+    border: 1px solid $mid-gray;
+    align-items: center;
+    padding: calc($gutter / 2);
+    border-radius: 10px;
+
+    input {
+      flex: 1;
+      border: none;
+      background: none;
+      color: $white;
+    }
+
+    svg {
+      cursor: pointer;
+      color: $mid-gray;
+    }
+  }
+
+  h3 {
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+  }
+
+  .currentTrends {
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+
+    .trends {
+      display: flex;
+      flex-direction: column;
+      gap: calc($gutter / 2);
+
+      .trend {
+        display: flex;
+        align-items: center;
+        gap: calc($gutter / 2);
+        padding: calc($gutter / 2);
+        background-color: $mid-gray;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: lighten($mid-gray, 10%);
+          transform: scale(1.01) translateY(-2px);
+        }
+
+        .trendPosition {
+          font-size: 24px;
+          font-weight: bold;
+        }
+
+        .trendText {
+          flex: 2;
+        }
+
+        .trendNumber {
+          color: $dark-gray;
+        }
+      }
+    }
+
+    .more {
+      justify-self: flex-end;
+      align-self: flex-end;
+    }
+  }
+
+  .watchlist {
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+
+    .red {
+      color: $red;
+    }
+
+    .green {
+      color: $green;
+    }
+
+    .watchlistHeader {
+      display: flex;
+      align-items: center;
+
+      .watchlistHeaderRight {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: calc($gutter / 2);
+
+        .watchlistHeaderRightItem {
+          background-color: $mid-gray;
+          border-radius: 10px;
+          width: calc($gutter * 2);
+          height: calc($gutter * 2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+
+          &.active {
+            border: 5px solid #14f195;
+          }
+
+          &:hover {
+            background-color: lighten($mid-gray, 10%);
+            transform: scale(1.01) translateY(-2px);
+          }
+        }
+      }
+    }
+
+    .watchlistItems {
+      display: flex;
+      flex-direction: column;
+      gap: calc($gutter / 2);
+
+      .watchlistItem {
+        display: flex;
+        align-items: center;
+        gap: calc($gutter / 1.5);
+        padding: calc($gutter / 2);
+        background-color: $mid-gray;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: lighten($mid-gray, 10%);
+          transform: scale(1.01) translateY(-2px);
+        }
+
+        .watchlistItemName {
+          flex: 2;
+        }
+      }
+    }
+  }
+}

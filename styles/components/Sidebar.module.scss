@@ -6,6 +6,7 @@
   padding: $gutter calc($gutter * 2);
   gap: calc($gutter * 2.5);
   min-width: 20%;
+  max-height: 100vh;
 
   .logo {
     display: flex;

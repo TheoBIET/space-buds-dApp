@@ -8,14 +8,14 @@ import { useEffect } from "react";
 import styles from "../../styles/components/Navbar.module.scss";
 
 export default function Navbar() {
-  const { publicKey, wallet, disconnect } = useWallet();
+  const { publicKey, wallet } = useWallet();
 
   useEffect(() => {
     const currentPath = Router.pathname;
     if (currentPath === "/" || currentPath === "/team" || currentPath === "/roadmap") {
       if (wallet && publicKey) {
         // Redirect to the timeline page if the user is logged in
-        Router.push("/timeline");
+        Router.push(`/profile/${publicKey?.toString()}`);
       }
     }
   }, [wallet, publicKey]);

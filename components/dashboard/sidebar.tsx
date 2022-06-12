@@ -27,7 +27,12 @@ export default function SideBar() {
   const navigateTo = (path: string) => {
     const lowPath = path.toLowerCase();
     setCurrentPath(lowPath);
-    Router.push(`${lowPath}`);
+
+    if (lowPath === "profile") {
+      return Router.push(`/profile/${publicKey?.toString()}`);
+    }
+
+    Router.push(`/${lowPath}`);
   };
 
   const links = [

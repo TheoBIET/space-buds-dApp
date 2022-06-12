@@ -2,12 +2,13 @@
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import styles from "../../../styles/layouts/Profile.module.scss";
-import Link from "next/link";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineUserAdd } from "react-icons/hi";
 export default function Header() {
-  const [currentPath, setCurrentPath] = useState('');
+  const { publicKey } = useWallet();
+  const [currentPath, setCurrentPath] = useState("");
 
   useEffect(() => {
     setCurrentPath(Router.pathname);
@@ -55,13 +56,23 @@ export default function Header() {
       </div>
       <nav className={styles.nav}>
         <ul>
-          <li className={`${currentPath === '/profile' ? styles.active : ''}`} onClick={() => navigateTo('/profile')}>
+          <li
+            className={`${currentPath === "/profile" ? styles.active : ""}`}
+            onClick={() => navigateTo(`/profile/${publicKey?.toString()}`)}>
             Feed
           </li>
-          <li className={`${currentPath.includes('inventory') ? styles.active : ''}`} onClick={() => navigateTo('/profile/inventory')}>
+          <li
+            className={`${
+              currentPath.includes("inventory") ? styles.active : ""
+            }`}
+            onClick={() => navigateTo(`/profile/${publicKey?.toString()}/inventory`)}>
             Inventory
           </li>
-          <li className={`${currentPath.includes('pictures') ? styles.active : ''}`} onClick={() => navigateTo('/profile/pictures')}>
+          <li
+            className={`${
+              currentPath.includes("pictures") ? styles.active : ""
+            }`}
+            onClick={() => navigateTo(`/profile/${publicKey?.toString()}/pictures`)}>
             Pictures
           </li>
         </ul>

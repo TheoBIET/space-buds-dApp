@@ -14,6 +14,7 @@ export default function DashboardLayout({ children }: LayoutProps) {
       <Sidebar />
       <div className={styles.content}>
         <Header />
+        {children}
       </div>
       <Discover />
     </div>

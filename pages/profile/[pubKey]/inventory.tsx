@@ -28,22 +28,23 @@ export default function Inventory() {
       )) {
         const metadata = await axios.get(nft.data.uri);
         const { name, symbol, image, attributes, external_url } = metadata.data;
+        console.log(metadata.data);
         const cleanData: MetadataNFT = {
           name,
-          symbol,
+          symbol: symbol || name.split('').splice(0, 3).join('').toUpperCase(),
           image,
           attributes,
           external_url,
         };
+        console.log(cleanData);
 
         // Add the token to the collection
-        if (!data[symbol]) {
-          data[symbol] = [{ ...cleanData }];
+        if (!data[cleanData.symbol]) {
+          data[cleanData.symbol] = [{ ...cleanData }];
         } else {
-          data[symbol] = [...data[symbol], { ...cleanData }];
+          data[cleanData.symbol] = [...data[cleanData.symbol], { ...cleanData }];
         }
       }
-
       setAssets(data);
     } catch (error) {
       console.log(error);

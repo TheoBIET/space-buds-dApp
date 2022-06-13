@@ -1,26 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
 import styles from "../../../styles/layouts/Profile.module.scss";
-import { useWallet } from "@solana/wallet-adapter-react";
 
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineUserAdd } from "react-icons/hi";
 import { useRouter } from "next/router";
 
 export default function Header() {
-  const { publicKey } = useWallet();
   const [currentPath, setCurrentPath] = useState('');
+  const [publicKey, setPublicKey] = useState('');
+  const [publicKeyFormatted, setPublicKeyFormatted] = useState('');
   const router = useRouter();
-  const pubKeyParam = router.query?.pubKey
-  const publicKeyFormatted = `${pubKeyParam}`.split('').splice(0, 4).join('') + '...' + `${pubKeyParam}`.split('').splice(-4).join('')
-  
+  const pubKeyParam = router.query?.pubKey as string;
 
   useEffect(() => {
     setCurrentPath(router.pathname);
+
+    if (router.isReady) {
+      const pubKey = router.query?.pubKey as string;
+      const pubKeyFormatted = `${pubKey
+        .split("")
+        .splice(0, 4)
+        .join("")}...${pubKey.split("").splice(-4).join("")}`;
+      setPublicKey(pubKey);
+      setPublicKeyFormatted(pubKeyFormatted);
+    }
   }, [router]);
 
   const copyWallet = () => {
-    navigator.clipboard.writeText(`${pubKeyParam}`);
+    navigator.clipboard.writeText(publicKey);
   };
 
   const navigateTo = (path: string) => {
@@ -35,26 +43,25 @@ export default function Header() {
       <div className={styles.socialsList}></div>
       <img
         className={styles.picture}
-        src="https://susanoo.mypinata.cloud/ipfs/QmdJXHKakL96mUNVcct6rd3UL5Nq2umac4NwibHPAtAuTA/5324.png"
+        src="https://thumbs.dreamstime.com/b/transf%C3%A9rez-l-avatar-texte-d-attente-de-photo-profil-125707135.jpg"
         alt="avatar"
       />
       <div className={styles.name}>
-        <h1 className={styles.username}>@ƊɑѵƊɑѵ</h1>
+        <h1 className={styles.username}>@{publicKey.split('').splice(0,15)}...</h1>
         <div onClick={copyWallet} className={styles.wallet}>
           <BiCopy />
           <span>{publicKeyFormatted}</span>
         </div>
       </div>
       <div className={styles.description}>
-        20 | 🇫🇷 Fullstack Web Developper 💻 <br />
-        Studying Deep Learning #SOL 🚀`
+        No description yet.
       </div>
       <div className={styles.statistics}>
         <div className={styles.follows}>
-          <span className={styles.bold}>234,5k</span> followers | 
-          <span className={styles.bold}>234</span> followed
+          <span className={styles.bold}>0</span> followers | 
+          <span className={styles.bold}>0</span> followed
         </div>
-        <div className={styles.followButton}>
+        <div className={`${styles.followButton} ${styles.disabled}`}>
           <HiOutlineUserAdd />
           Follow
         </div>
@@ -62,22 +69,27 @@ export default function Header() {
       <nav className={styles.nav}>
         <ul>
           <li
-            className={`${currentPath === "/profile" ? styles.active : ""}`}
-            onClick={() => navigateTo(`/profile/${publicKey?.toString()}`)}>
+            className={`${
+              !currentPath.includes("inventory") &&
+              !currentPath.includes("pictures")
+                ? styles.active
+                : ""
+            }`}
+            onClick={() => navigateTo(`/profile/${pubKeyParam}`)}>
             Feed
           </li>
           <li
             className={`${
               currentPath.includes("inventory") ? styles.active : ""
             }`}
-            onClick={() => navigateTo(`/profile/${publicKey?.toString()}/inventory`)}>
+            onClick={() => navigateTo(`/profile/${pubKeyParam}/inventory`)}>
             Inventory
           </li>
           <li
             className={`${
               currentPath.includes("pictures") ? styles.active : ""
             }`}
-            onClick={() => navigateTo(`/profile/${publicKey?.toString()}/pictures`)}>
+            onClick={() => navigateTo(`/profile/${pubKeyParam}/pictures`)}>
             Pictures
           </li>
         </ul>

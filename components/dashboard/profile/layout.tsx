@@ -16,10 +16,10 @@ export default function DashboardLayout({ children }: LayoutProps) {
   useEffect(() => {
     const pubKey = router.query.pubKey;
 
-    if (!pubKey) {
-      router.push("/timeline");
-    }
-  }, [router]);
+    // if (pubKey === 'undefined') {
+    //   router.push("/timeline");
+    // }
+  });
 
   return (
     <div id={styles.dashboard}>

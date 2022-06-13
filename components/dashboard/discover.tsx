@@ -2,14 +2,20 @@ import styles from "../../styles/components/Discover.module.scss";
 
 import { BiTrendingDown, BiTrendingUp, BiSearchAlt } from "react-icons/bi";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import axios from "axios";
 
 export default function Discover() {
-  const initialCoins = useMemo(() => ["bitcoin", "solana", "ethereum", "tether"], []);
+  const router = useRouter();
+  const initialCoins = useMemo(
+    () => ["bitcoin", "solana", "ethereum", "binancecoin"],
+    []
+  );
   const availablesTimeFrames = ["24h", "7d", "30d"];
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [coinsData, setCoinsData] = useState<Array<any>>([]);
+  const [searchValue, setSearchValue] = useState("");
   const [currentTimeFrame, setCurrentTimeFrame] = useState(
     availablesTimeFrames[0]
   );
@@ -69,11 +75,26 @@ export default function Discover() {
     }
   }, [initialCoins, coinsData, isDataLoaded]);
 
+  const searchWallet = (e: any) => {
+    router.push(`/profile/${searchValue}/inventory`);
+  };
+
+  const handleInputChange = (e: any) => {
+    setSearchValue(e.target.value);
+  }
+
+
   return (
     <div className={styles.container}>
       <div className={styles.searchBar}>
-        <input type="text" placeholder="Search anything..." />
-        <BiSearchAlt />
+        <input
+          value={searchValue}
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Search anything..."
+          onSubmit={searchWallet}
+        />
+        <BiSearchAlt onClick={searchWallet} />
       </div>
       <div className={styles.currentTrends}>
         <h3>Current Trends</h3>

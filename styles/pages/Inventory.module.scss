@@ -1,5 +1,19 @@
 @import "../abstracts/vars.scss";
 
+.arrowBack {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: $gutter;
+  cursor: pointer;
+  display: flex;
+  gap: calc($gutter / 2);
+
+  svg {
+    font-size: 32px;
+  }
+}
+
 .container {
   display: flex;
   flex-direction: row;
@@ -7,7 +21,6 @@
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  margin-top: calc($gutter * 2);
 
   .loader {
     font-size: calc($gutter * 3);
@@ -50,7 +63,7 @@
     }
 
     .collectionName {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       justify-self: left;
       width: 100%;

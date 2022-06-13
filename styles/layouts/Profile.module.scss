@@ -1,8 +1,9 @@
 @import "../abstracts/vars.scss";
-$url: "https://pbs.twimg.com/media/FDT5DkOXMAgzz38.jpg:large";
+$url: "https://www.quotemaker.in/assets/images/default_cover.jpg";
 
 .overview {
   position: relative;
+  margin-bottom: calc($gutter * 2);
 
   .cover {
     height: 40vh;
@@ -85,7 +86,7 @@ $url: "https://pbs.twimg.com/media/FDT5DkOXMAgzz38.jpg:large";
       cursor: pointer;
       border-radius: 8px;
       color: $black;
-      box-shadow: 0px 4px 4px #80c6b9;
+      box-shadow: #80c6b9 0px 3px 2px, #80c6b9 0px 3px 2px;
       transition: all 0.2s ease-in-out;
       background: linear-gradient(
         140deg,
@@ -97,6 +98,14 @@ $url: "https://pbs.twimg.com/media/FDT5DkOXMAgzz38.jpg:large";
 
       &:hover {
         transform: translateY(-2px);
+      }
+
+      &.disabled {
+        cursor: not-allowed;
+
+        &:hover {
+          transform: translateY(0);
+        }  
       }
 
       svg {

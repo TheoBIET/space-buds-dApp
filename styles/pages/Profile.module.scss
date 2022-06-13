@@ -1,2 +1,8 @@
 @import "../abstracts/vars.scss";
-$url: "https://pbs.twimg.com/media/FDT5DkOXMAgzz38.jpg:large";
+
+.container {
+  display: flex;
+  margin-top: calc($gutter * 5);
+  justify-content: center;
+  align-items: center;
+}

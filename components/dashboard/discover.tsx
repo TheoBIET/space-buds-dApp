@@ -6,7 +6,7 @@ import Image from "next/image";
 import axios from "axios";
 
 export default function Discover() {
-  const initialCoins = useMemo(() => ["bitcoin", "solana", "ethereum"], []);
+  const initialCoins = useMemo(() => ["bitcoin", "solana", "ethereum", "tether"], []);
   const availablesTimeFrames = ["24h", "7d", "30d"];
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [coinsData, setCoinsData] = useState<Array<any>>([]);

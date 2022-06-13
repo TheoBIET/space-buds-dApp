@@ -1,24 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import Router from 'next/router';
-import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { useEffect } from "react";
+import { useWallet } from "@solana/wallet-adapter-react";
 
 import styles from "../../styles/components/Navbar.module.scss";
 
 export default function Navbar() {
-  const { publicKey, wallet } = useWallet();
-
-  useEffect(() => {
-    const currentPath = Router.pathname;
-    if (currentPath === "/" || currentPath === "/team" || currentPath === "/roadmap") {
-      if (wallet && publicKey) {
-        // Redirect to the timeline page if the user is logged in
-        Router.push(`/profile/${publicKey?.toString()}`);
-      }
-    }
-  }, [wallet, publicKey]);
+  const { publicKey } = useWallet();
 
   return (
     <div className={styles.container}>
@@ -43,7 +31,10 @@ export default function Navbar() {
           <a className={styles.link}>Discord</a>
         </Link>
       </nav>
-      <WalletMultiButton />
+      {!publicKey && <WalletMultiButton className="button purple" />}
+      <Link href="/timeline">
+        <div className="button purple">Go To App</div>
+      </Link>
     </div>
   );
 }

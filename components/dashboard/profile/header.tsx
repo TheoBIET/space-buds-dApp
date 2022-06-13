@@ -1,27 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
-import Router from "next/router";
 import styles from "../../../styles/layouts/Profile.module.scss";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 import { BiCopy } from "react-icons/bi";
 import { HiOutlineUserAdd } from "react-icons/hi";
+import { useRouter } from "next/router";
+
 export default function Header() {
   const { publicKey } = useWallet();
-  const [currentPath, setCurrentPath] = useState("");
+  const [currentPath, setCurrentPath] = useState('');
+  const router = useRouter();
+  const pubKeyParam = router.query?.pubKey
+  const publicKeyFormatted = `${pubKeyParam}`.split('').splice(0, 4).join('') + '...' + `${pubKeyParam}`.split('').splice(-4).join('')
+  
 
   useEffect(() => {
-    setCurrentPath(Router.pathname);
-  }, []);
+    setCurrentPath(router.pathname);
+  }, [router]);
 
   const copyWallet = () => {
-    navigator.clipboard.writeText("WALL...ETTT");
+    navigator.clipboard.writeText(`${pubKeyParam}`);
   };
 
   const navigateTo = (path: string) => {
     const lowPath = path;
     setCurrentPath(lowPath);
-    Router.push(`${lowPath}`);
+    router.push(`${lowPath}`);
   };
 
   return (
@@ -37,7 +42,7 @@ export default function Header() {
         <h1 className={styles.username}>@ƊɑѵƊɑѵ</h1>
         <div onClick={copyWallet} className={styles.wallet}>
           <BiCopy />
-          <span>WALL...ETTT</span>
+          <span>{publicKeyFormatted}</span>
         </div>
       </div>
       <div className={styles.description}>

@@ -8,6 +8,10 @@
   min-width: 20%;
   max-height: 100vh;
 
+  .maxWidth {
+    width: 100%;
+  }
+
   .logo {
     display: flex;
     align-items: flex-end;

@@ -45,8 +45,12 @@ export const getAllTokens = async (pubKey: string) => {
     ],
   };
 
-  const response = await axios.post(MAIN_NET, data);
-  return filterTokens(response.data.result.value);
+  try {
+    const response = await axios.post(MAIN_NET, data);
+    return filterTokens(response.data?.result?.value);
+  } catch (error) {
+    return [];
+  }
 };
 
 // Retrieve all tokens metadata from the blockchain with Metaplex fundation

@@ -1,5 +1,64 @@
 body {
-    background: $black;
-    font-family: 'Poppins', sans-serif !important;
-    color: white;
+  background: $black;
+  font-family: "Poppins", sans-serif !important;
+  color: white;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc($gutter / 1.5) $gutter;
+  border-radius: 8px !important;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  background-color: $purple;
+  font-family: $poppins !important;
+  font-weight: bold !important;
+
+  &.disabled {
+    cursor: not-allowed;
+    &:hover,
+    &:active {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  &:active {
+    transform: scale(0.9);
+    box-shadow: none;
+  }
+
+  &.purple {
+    background-color: $purple;
+    color: $white;
+
+    &:hover,
+    &:active {
+      background-color: $purple !important;
+      box-shadow: 0 10px 20px -10px rgba($purple, 1);
+      transform: translate(0, -3px);
+    }
+  }
+}
+
+.wallet-adapter-button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: calc($gutter / 1.5) $gutter !important;
+    border-radius: 8px !important;
+    transition: 0.3s ease-in-out !important;
+    cursor: pointer !important;
+    background-color: $purple !important;
+    font-family: $poppins !important;
+    font-weight: bold !important;
+
+    &:hover,
+    &:active {
+      background-color: $purple !important;
+      box-shadow: 0 10px 20px -10px rgba($purple, 1);
+      transform: translate(0, -3px);
+    }
 }
